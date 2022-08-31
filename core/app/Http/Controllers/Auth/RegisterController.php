@@ -133,13 +133,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         $general = GeneralSetting::first();
-
-
         $referBy = session()->get('reference');
         if ($referBy != null) {
-            $referUser = User::where('username', $referBy)->first();
+            $referUser = User::where('username', $data['referBy'])->first();
         } else {
             $referUser = null;
         }
